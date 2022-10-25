@@ -1,0 +1,22 @@
+{
+  "name": "songeon",
+  "version": "1.0.0",
+  "description": "site baseado em minhas playlists do spotify",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ansattz/songeon.git"
+  },
+  "keywords": [
+    "playlist"
+  ],
+  "author": "ansattz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ansattz/songeon/issues"
+  },
+  "homepage": "https://github.com/ansattz/songeon#readme"
+}
