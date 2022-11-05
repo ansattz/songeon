@@ -18,29 +18,31 @@
    <!-- Style -->
    <style>
       html {
-      scroll-behavior: smooth;
+         scroll-behavior: smooth;
       }
       body {
-      background: url("assets/img/bg.jpeg") no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
+         background: url("assets/img/bg.jpeg") no-repeat center center fixed;
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;
       }
    </style>
 </head>
 <body>
-   <div class="container">
-      <div class="segment">
-         <button class="ui active button" id="btnLoc">
-         <i class="map marked icon" style="visibility: visible;"></i>
-               Localizacao
+      <div class="main menu">
+         <button class="menu button" id="btnLoc">
+            <i class="marker icon" style="color: azure;"></i>
+         </button>
+
+      </div>
+      <div class="contact menu">
+         <button class="menu button">
+            <i class="github icon" ></i>
          </button>
       </div>
       <div class="playlist" id="playlist-id">
-         
       </div>
-   </div>
    <script src="index.js" ></script>
 </body>
 </html>
