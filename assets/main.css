@@ -1,1 +1,65 @@
 /* Stylesheet Principal */
+   body {
+      display: flex;
+      margin: 0; 
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      overflow: hidden;
+   }
+
+   .bg {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -9999;
+   }
+
+   .main.menu {
+      width: 85px;
+      align-self: center;
+   }
+
+   .menu.button {
+      border-radius: 5px;
+      height: 40px;
+      width: 50px;
+   }
+
+   .contact.menu {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      align-self: center;
+   }
+
+   .playlist {
+       width: 1200px;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+   }
+
+   i.icon, i.icons {
+       font-size: 20px;
+   }
+
+   .ui.radio.checkbox .box, .ui.radio.checkbox label {
+    padding-left: 20px;
+}
+
+/* Buttons standard behavior */
+   .menu.button, .ui.animated.button {
+      background-image: radial-gradient(#a59393, #523f5c);
+   }
+
+   .menu.button:hover, .ui.animated.button:hover {
+      background-image: radial-gradient(#8a8484, #a340d8);
+   }
+
+   .ui.active.button:active, .ui.animated.button:active {
+      background-image: radial-gradient(#8a8484, #ffffff);
+   }
