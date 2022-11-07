@@ -36,19 +36,28 @@
       align-self: center;
    }
 
-   .playlist {
-       width: 1200px;
-       display: flex;
-       align-items: center;
-       justify-content: center;
+   .radio.player {
+      display: none;
    }
 
    i.icon, i.icons {
        font-size: 20px;
    }
 
+   .ui.segment {
+      background: #c8c394;
+      opacity: 40%;
+      margin: 37px;
+   }
+
+   .ui.segment:hover {
+      background: #c8c394;
+      opacity: 95%;
+
+   }
+
    .ui.radio.checkbox .box, .ui.radio.checkbox label {
-    padding-left: 20px;
+       padding-left: 20px;
 }
 
 /* Buttons standard behavior */
