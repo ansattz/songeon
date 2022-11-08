@@ -40,25 +40,35 @@
       display: none;
    }
 
+   .radio.volume {
+      margin-top: 20px;
+      width: 250px;
+   }
+
    i.icon, i.icons {
        font-size: 20px;
    }
-
+ 
    .ui.segment {
-      background: #c8c394;
-      opacity: 40%;
-      margin: 37px;
+    background: #c8c394;
+    opacity: 40%;
    }
 
    .ui.segment:hover {
       background: #c8c394;
       opacity: 95%;
-
    }
 
    .ui.radio.checkbox .box, .ui.radio.checkbox label {
        padding-left: 20px;
-}
+
+    }
+   .ui.modal {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      background: rgb(0 0 0 / 0%);
+   }
+
 
 /* Buttons standard behavior */
    .menu.button, .ui.animated.button {
