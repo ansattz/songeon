@@ -3,20 +3,27 @@ var playerDeeph, playerLofi, playerClassic, playerAmbient;
 let btnLoc = document.getElementById('btnLoc')
 let corpo = document.getElementById('corpo-conteudo')
 let gitBtn = document.getElementById('autor-id')
+let btnList = document.getElementById('btnList')
 let playRadioBtn = document.getElementById('play-radio')
 let pauseRadioBtn = document.getElementById('pause-radio')
 let video = document.querySelector('video')
 let source = document.querySelector('source')
+let spotifyDiv = document.getElementById('spotify-player')
 let lofiBox = document.getElementById('lofi-box-id')
 let deephBox = document.getElementById('deeph-box-id')
 let classicBox = document.getElementById('classic-box-id')
 let ambientBox = document.getElementById('ambient-box-id')
+let volRadio = document.getElementById('radio-volume-id')
+
+btnList.onclick = () => {
+   $('.fullscreen.modal').modal('show')
+}
+
 // Teremos uma playlist de acordo com o tempo na regiao.
 // A descricao nos entrega mais detalhes sobre como esta o 
 // tempo naquela regiao. Como sendo a primeira versao 
 // essa eh uma solucao razoavel antes de pensar em como 
 // esta a temperatura na regiao.
-
 const theme = {
    "Clouds": {
       "few clouds": "1J58o8yP11hcw0ZiJ3Q9mQ",
@@ -29,6 +36,9 @@ const theme = {
       "moderate rain": "4QAYAMQrGEG6u8OaopJTxX",
       "shower rain": "4GmPOIOCItFa4TtFmG7Ysz",
       "heavy intensity rain": "5C1OsolkEdvyrboc25OLG8"
+   },
+   "Mist": {
+      "mist": "6CHeafntix4NbfoETn5gE7"
    }
 }
 
@@ -85,7 +95,7 @@ const erroPosicao = (erro) => {
 const httpGet = (url) => {
    var http = new XMLHttpRequest()
    http.open("GET", url, false)
-   http.send(null);
+   http.send(null)
    return JSON.parse(http.responseText)
 }
 
@@ -130,7 +140,6 @@ function onYouTubeIframeAPIReady() {
       events: {
       }
    })
-
 }
 
 function startDeeph() {
@@ -139,6 +148,7 @@ function startDeeph() {
    playerClassic.stopVideo()
 
    playerDeeph.playVideo()
+   playerDeeph.setVolume(volRadio.value)
    source.src = bgs['deeph']
    video.load()
 }
@@ -149,6 +159,7 @@ function startLofi() {
    playerClassic.stopVideo()
 
    playerLofi.playVideo()
+   playerLofi.setVolume(volRadio.value)
    source.src = bgs['lofi']
    video.load()
 }
@@ -159,6 +170,7 @@ function startClassic() {
    playerDeeph.stopVideo()
 
    playerClassic.playVideo()
+   playerClassic.setVolume(volRadio.value)
    source.src = bgs['classic']
    video.load()
 }
@@ -169,6 +181,7 @@ function startAmbient() {
    playerClassic.stopVideo()
 
    playerAmbient.playVideo()
+   playerAmbient.setVolume(volRadio.value)
    source.src = bgs['ambient']
    video.load()
 }
@@ -181,11 +194,11 @@ function aplicarTema() {
    // Por enquanto acho interessante, quando pegar a localizacao novamente, 
    // "atualizar" a playlist
 
-   if (document.getElementById('spotify-player') == null) {
+   if (spotifyDiv == null) {
       corpo.appendChild(criarPlaylist(theme[tempoAtual][descTempo]))
    }
    else {
-      document.getElementById('spotify-player').remove()
+      spotifyDiv.remove()
       corpo.appendChild(criarPlaylist(theme[tempoAtual][descTempo]))
    }
    source.src = bgs[descTempo]
@@ -215,7 +228,28 @@ playRadioBtn.onclick = () => {
       startClassic()
    }
 
-   else {
+   else if (ambientBox.checked == true) {
       startAmbient()
+   }
+
+   else {
+      alert("Selecione uma rádio")
+   }
+}
+
+volRadio.onclick = () => {
+   if (lofiBox.checked == true) {
+      playerLofi.setVolume(volRadio.value)
+   }
+   else if (deephBox.checked == true) {
+      playerDeeph.setVolume(volRadio.value)
+   }
+
+   else if (classicBox.checked == true) {
+      playerClassic.setVolume(volRadio.value)
+   }
+
+   else if (ambientBox.checked == true) {
+      playerAmbient.setVolume(volRadio.value)
    }
 }
