@@ -19,7 +19,7 @@
    <!-- Style -->
    <style>
       html {
-         scroll-behavior: smooth;
+      scroll-behavior: smooth;
       }
    </style>
 </head>
@@ -27,7 +27,13 @@
    <video autoplay muted loop class="bg" >
       <source src="https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-Fisherman.mp4" type="video/mp4" id="bg-id">
    </video>
-
+   <div class="ui fullscreen modal" >
+      <div style="display: flex; justify-content: center; gap: 35px;">
+         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6CHeafntix4NbfoETn5gE7?utm_source=generator" width="300" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4QAYAMQrGEG6u8OaopJTxX?utm_source=generator" width="300" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4GmPOIOCItFa4TtFmG7Ysz?utm_source=generator" width="300" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+   </div>
    <div class="main menu">
       <button class="menu button" id="btnLoc">
       <i class="marker icon" style="color: azure;"></i>
@@ -44,56 +50,56 @@
          </div>
       </div>
    </div>
-
-<div id="corpo-conteudo">
-   <div class="ui segment">
-      <div style="display: flex; flex-direction: row; align-items: center; gap: 40px;">
-         <div style="display: flex; flex-direction: row;">
-            <div class="ui icon buttons">
-               <button class="ui button" id="play-radio">
-               <i class="play icon"></i>
-               </button>
-               <button class="ui button" id="pause-radio">
-               <i class="pause icon"></i>
-               </button>
+   <div id="corpo-conteudo">
+      <div class="ui segment" style="margin: 120px;" >
+         <div 
+            style="display: flex; flex-direction: row; align-items: center; gap: 40px;">
+            <div style="display: flex; flex-direction: row;">
+               <div class="ui icon buttons">
+                  <button class="ui button" id="play-radio">
+                  <i class="play icon"></i>
+                  </button>
+                  <button class="ui button" id="pause-radio">
+                  <i class="pause icon"></i>
+                  </button>
+               </div>
             </div>
+            <h5 style="margin-top: 0px;">RADIO SONGEON</h5>
          </div>
-         <h5 style="margin-top: 0px;">RADIO SONGEON</h5>
-      </div>
-      <div class="ui divider"></div>
-      <div style="display: flex; flex-direction: row; gap: 25px">
-         <div style="display: flex; flex-direction: column;">
-            <div class="ui radio checkbox">
-               <div class="radio player" id="lofi-id"></div>
-               <input type="radio" name="radio" id="lofi-box-id"
-                  onclick="startLofi()">
-               <label>Lo-fi radio</label>
+         <input class="radio volume" type="range" min="1" max="100" value="50" id="radio-volume-id">
+         <div class="ui divider"></div>
+         <div style="display: flex; flex-direction: row; gap: 25px">
+            <div style="display: flex; flex-direction: column;">
+               <div class="ui radio checkbox">
+                  <div class="radio player" id="lofi-id"></div>
+                  <input type="radio" name="radio" id="lofi-box-id"
+                     onclick="startLofi()">
+                  <label>Lo-fi radio</label>
+               </div>
+               <div class="ui radio checkbox">
+                  <div class="radio player" id="deeph-id"></div>
+                  <input type="radio" name="radio" id="deeph-box-id"
+                     onclick="startDeeph()">
+                  <label>Deep house radio</label>
+               </div>
             </div>
-            <div class="ui radio checkbox">
-               <div class="radio player" id="deeph-id"></div>
-               <input type="radio" name="radio" id="deeph-box-id"
-                  onclick="startDeeph()">
-               <label>Deep house radio</label>
-            </div>
-         </div>
-         <div style="display: flex; flex-direction: column;">
-            <div class="ui radio checkbox">
-               <div class="radio player" id="classic-id"></div>
-               <input type="radio" name="radio" id="classic-box-id"
-                  onclick="startClassic()">
-               <label>Classical radio</label>
-            </div>
-            <div class="ui radio checkbox">
-               <div class="radio player" id="ambient-id"></div>
-               <input type="radio" name="radio" id="ambient-box-id"
-                  onclick="startAmbient()">
-               <label>Ambient radio</label>
+            <div style="display: flex; flex-direction: column;">
+               <div class="ui radio checkbox">
+                  <div class="radio player" id="classic-id"></div>
+                  <input type="radio" name="radio" id="classic-box-id"
+                     onclick="startClassic()">
+                  <label>Classical radio</label>
+               </div>
+               <div class="ui radio checkbox">
+                  <div class="radio player" id="ambient-id"></div>
+                  <input type="radio" name="radio" id="ambient-box-id"
+                     onclick="startAmbient()">
+                  <label>Ambient radio</label>
+               </div>
             </div>
          </div>
       </div>
    </div>
-</div>
    <script src="index.js" ></script>
-   <script src="list.js"></script>
 </body>
 </html>
