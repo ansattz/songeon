@@ -46,23 +46,23 @@
    }
 
    i.icon, i.icons {
-       font-size: 20px;
+      font-size: 20px;
    }
  
    .ui.segment {
-    background: #c8c394;
-    opacity: 40%;
+      background: #0d170d;
+      opacity: 40%;
    }
 
    .ui.segment:hover {
-      background: #c8c394;
+      background: #0d170d;
       opacity: 95%;
    }
 
    .ui.radio.checkbox .box, .ui.radio.checkbox label {
        padding-left: 20px;
-
     }
+
    .ui.modal {
       -webkit-box-shadow: none;
       box-shadow: none;
@@ -72,13 +72,13 @@
 
 /* Buttons standard behavior */
    .menu.button, .ui.animated.button {
-      background-image: radial-gradient(#a59393, #523f5c);
+      background-image: radial-gradient(#26ae30, #080808); 
    }
 
    .menu.button:hover, .ui.animated.button:hover {
-      background-image: radial-gradient(#8a8484, #a340d8);
+      background-image: radial-gradient(#26ae30, #19460f);
    }
 
    .ui.active.button:active, .ui.animated.button:active {
-      background-image: radial-gradient(#8a8484, #ffffff);
+      background-image: radial-gradient(#e4d011, #000000); 
    }
