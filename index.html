@@ -15,6 +15,7 @@
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="assets/main.css" />
+   <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1892/1892807.png" sizes="32x32"/>
    <title>Songeon</title>
    <!-- Style -->
    <style>
@@ -25,7 +26,7 @@
 </head>
 <body>
    <video autoplay muted loop class="bg" >
-      <source src="https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-Fisherman.mp4" type="video/mp4" id="bg-id">
+      <source src="https://mylivewallpapers.com/wp-content/uploads/Nature/PREVIEW-Pond-Silent-Summer.mp4" id="bg-id">
    </video>
    <div class="ui fullscreen modal" >
       <div style="display: flex; justify-content: center; gap: 35px;">
@@ -64,9 +65,9 @@
                   </button>
                </div>
             </div>
-            <h5 style="margin-top: 0px;">RADIO SONGEON</h5>
+            <h5 style="margin-top: 0px; color: azure;">RADIO SONGEON</h5>
          </div>
-         <input class="radio volume" type="range" min="1" max="100" value="50" id="radio-volume-id">
+         <input class="radio volume" type="range" min="1" max="100" value="35" id="radio-volume-id">
          <div class="ui divider"></div>
          <div style="display: flex; flex-direction: row; gap: 25px">
             <div style="display: flex; flex-direction: column;">
@@ -74,13 +75,13 @@
                   <div class="radio player" id="lofi-id"></div>
                   <input type="radio" name="radio" id="lofi-box-id"
                      onclick="startLofi()">
-                  <label>Lo-fi radio</label>
+                  <label style="color: azure;">Lo-fi radio</label>
                </div>
                <div class="ui radio checkbox">
                   <div class="radio player" id="deeph-id"></div>
                   <input type="radio" name="radio" id="deeph-box-id"
                      onclick="startDeeph()">
-                  <label>Deep house radio</label>
+                  <label style="color: azure;">Deep house radio</label>
                </div>
             </div>
             <div style="display: flex; flex-direction: column;">
@@ -88,13 +89,13 @@
                   <div class="radio player" id="classic-id"></div>
                   <input type="radio" name="radio" id="classic-box-id"
                      onclick="startClassic()">
-                  <label>Classical radio</label>
+                  <label style="color: azure;">Classical radio</label>
                </div>
                <div class="ui radio checkbox">
                   <div class="radio player" id="ambient-id"></div>
                   <input type="radio" name="radio" id="ambient-box-id"
                      onclick="startAmbient()">
-                  <label>Ambient radio</label>
+                  <label style="color: azure;">Ambient radio</label>
                </div>
             </div>
          </div>
