@@ -19,12 +19,42 @@ btnList.onclick = () => {
    $('.fullscreen.modal').modal('show')
 }
 
+const httpGet = (url) => {
+   var http = new XMLHttpRequest()
+   http.open("GET", url, false)
+   http.send(null)
+   return JSON.parse(http.responseText)
+}
+
 // Teremos uma playlist de acordo com o tempo na regiao.
 // A descricao nos entrega mais detalhes sobre como esta o 
 // tempo naquela regiao. Como sendo a primeira versao 
 // essa eh uma solucao razoavel antes de pensar em como 
 // esta a temperatura na regiao.
 const theme = {
+   "Thunderstorm": {
+      "thunderstorm with light rain": "3N6clrC4QySdtJY8hKbsau",
+      "thunderstorm with rain": "3N6clrC4QySdtJY8hKbsau",
+      "thunderstorm with heavy rain": "3N6clrC4QySdtJY8hKbsau",
+      "light thunderstorm": "3N6clrC4QySdtJY8hKbsau",
+      "thunderstorm": "5C1OsolkEdvyrboc25OLG8",
+      "heavy thunderstorm": "3N6clrC4QySdtJY8hKbsau",
+      "ragged thunderstorm": "5C1OsolkEdvyrboc25OLG8",
+      "thunderstorm with light drizzle": "5C1OsolkEdvyrboc25OLG8",
+      "thunderstorm with drizzle": "5C1OsolkEdvyrboc25OLG8",
+      "thunderstorm with heavy drizzle": "28nMQDVHmc24xay4ZDp8GG"
+   },
+   "Dizzle": {
+      "light intensity drizzle": "4GmPOIOCItFa4TtFmG7Ysz",
+      "dizzle": "28nMQDVHmc24xay4ZDp8GG",
+      "heavy intensity drizzle": "28nMQDVHmc24xay4ZDp8GG",
+      "light intensity drizzle rain": "47PtuZO5RI7lLAV2ldBbld",
+      "drizzle rain": "47PtuZO5RI7lLAV2ldBbld",
+      "heavy intensity drizzle rain": "47PtuZO5RI7lLAV2ldBbld",
+      "shower rain and drizzle": "47PtuZO5RI7lLAV2ldBbld",
+      "heavy shower rain and drizzle": "47PtuZO5RI7lLAV2ldBbld",
+      "shower drizzle": "4GmPOIOCItFa4TtFmG7Ysz"
+   },
    "Clouds": {
       "few clouds": "1J58o8yP11hcw0ZiJ3Q9mQ",
       "scattered clouds": "7LOpKH4CjlNkIRwXr2vcHf",
@@ -33,30 +63,72 @@ const theme = {
    },
    "Rain": {
       "light rain": "47PtuZO5RI7lLAV2ldBbld",
-      "moderate rain": "4QAYAMQrGEG6u8OaopJTxX",
-      "shower rain": "4GmPOIOCItFa4TtFmG7Ysz",
-      "heavy intensity rain": "5C1OsolkEdvyrboc25OLG8"
+      "moderate rain": "47PtuZO5RI7lLAV2ldBbld",
+      "shower rain": "47PtuZO5RI7lLAV2ldBbld",
+      "heavy intensity rain": "3N6clrC4QySdtJY8hKbsau",
+      "very heavy rain": "3N6clrC4QySdtJY8hKbsau",
+      "extreme": "3N6clrC4QySdtJY8hKbsau",
+      "freezing rain": "4GmPOIOCItFa4TtFmG7Ysz",
+      "light intensity shower rain": "4GmPOIOCItFa4TtFmG7Ysz",
+      "heavy intensity shower rain": "3N6clrC4QySdtJY8hKbsau",
+      "ragged shower rain": "4GmPOIOCItFa4TtFmG7Ysz"
+   },
+   "Snow": {
+      "light snow": "4GmPOIOCItFa4TtFmG7Ysz",
+      "Snow": "4GmPOIOCItFa4TtFmG7Ysz",
+      "Heavy snow": "5C1OsolkEdvyrboc25OLG8",
+      "Sleet": "5C1OsolkEdvyrboc25OLG8",
+      "Light shower sleet": "5C1OsolkEdvyrboc25OLG8",
+      "Shower sleet": "5C1OsolkEdvyrboc25OLG8",
+      "Light rain and snow": "47PtuZO5RI7lLAV2ldBbld",
+      "Rain and snow": "47PtuZO5RI7lLAV2ldBbld",
+      "Light shower snow": "5C1OsolkEdvyrboc25OLG8",
+      "Shower snow": "5C1OsolkEdvyrboc25OLG8",
+      "Heavy shower snow": "5C1OsolkEdvyrboc25OLG8"
    },
    "Mist": {
       "mist": "6CHeafntix4NbfoETn5gE7"
+   },
+   "Smoke": {
+      "Smoke": "1GyHAxUvWoQxvKjpMICwnC"
+   },
+   "Haze": {
+      "Haze": "1GyHAxUvWoQxvKjpMICwnC"
+   },
+   "Dust": {
+      "sand/ dust whirls": "5x1oNsldc8jeawPEbM5FNi",
+      "dust": "5x1oNsldc8jeawPEbM5FNi"
+   },
+   "Fog": {
+      "fog": "3N6clrC4QySdtJY8hKbsau"
+   },
+   "Sand": {
+      "sand": "5x1oNsldc8jeawPEbM5FNi"
+   },
+   "Ash": {
+      "volcanic ash": "5x1oNsldc8jeawPEbM5FNi"
+   },
+   "Squall": {
+      "squalls": "5x1oNsldc8jeawPEbM5FNi"
+   },
+   "Tornado": {
+      "tornado": "1J58o8yP11hcw0ZiJ3Q9mQ"
+   },
+   "Clear": {
+      "clear sky": "4kBkZoyoAMxEuMc8X9E75p"
    }
 }
 
 const bgs = {
-   'few clouds': "https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-Chilling-with-My-Cat.mp4",
-   'broken clouds': "https://mylivewallpapers.com/wp-content/uploads/Fantasy/PREVIEW-Up-In-the-Clouds.mp4",
-   'overcast clouds': "https://mylivewallpapers.com/wp-content/uploads/Fantasy/PREVIEW-Boat-on-Clouds.mp4",
-   'mist': "https://mylivewallpapers.com/wp-content/uploads/Nature/PREVIEW-Calm-Lake.mp4",
-   'moderate rain': "https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-Living-Room-Chill.mp4",
-   'light rain': "https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-King-Wash.mp4",
-   'heavy intensity rain': "https://mylivewallpapers.com/wp-content/uploads/City/PREVIEW-Rain-Street-Ghostwire-Tokyo.mp4",
-   'very heavy rain': "https://mylivewallpapers.com/wp-content/uploads/City/PREVIEW-Raining-Streets-GTA5.mp4",
-   'extreme rain': "https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-Raining-Japanese-Village.mp4",
-   'scattered clouds': "https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-Room-with-Candles.mp4",
-   'lofi': "https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-Lo-Fi-Coffee-Shop.mp4",
-   'deeph': "https://mylivewallpapers.com/wp-content/uploads/Fantasy/PREVIEW-Moon-Pool-Party.mp4",
-   'classic': "https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-Study-Session.mp4",
-   'ambient': "https://mylivewallpapers.com/wp-content/uploads/City/PREVIEW-City-Ruins.mp4"
+   "Clouds": "https://mylivewallpapers.com/wp-content/uploads/Fantasy/PREVIEW-Boat-on-Clouds.mp4",
+   "Mist": "https://mylivewallpapers.com/wp-content/uploads/Nature/PREVIEW-Calm-Lake.mp4",
+   "Rain": "https://mylivewallpapers.com/wp-content/uploads/City/PREVIEW-Rain-Street-Ghostwire-Tokyo.mp4",
+   "Drizzle": "https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-King-Wash.mp4",
+   "Snow": "https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-Room-with-Candles.mp4",
+   "lofi": "https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-Lo-Fi-Coffee-Shop.mp4",
+   "deeph": "https://mylivewallpapers.com/wp-content/uploads/Fantasy/PREVIEW-Moon-Pool-Party.mp4",
+   "classic": "https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-Study-Session.mp4",
+   "ambient": "https://mylivewallpapers.com/wp-content/uploads/City/PREVIEW-City-Ruins.mp4"
 }
 
 function criarPlaylist(playlist_id) {
@@ -90,13 +162,6 @@ const mostrarPosicao = (pos) => {
 
 const erroPosicao = (erro) => {
    alert("Geolocation nao pegou loc")
-}
-
-const httpGet = (url) => {
-   var http = new XMLHttpRequest()
-   http.open("GET", url, false)
-   http.send(null)
-   return JSON.parse(http.responseText)
 }
 
 const pegarDadosLocalizacao = () => {
@@ -201,7 +266,7 @@ function aplicarTema() {
       spotifyDiv.remove()
       corpo.appendChild(criarPlaylist(theme[tempoAtual][descTempo]))
    }
-   source.src = bgs[descTempo]
+   source.src = bgs[tempoAtual]
    video.load()
 }
 
