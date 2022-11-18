@@ -10,7 +10,6 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css">
    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
-   <script src="https://www.youtube.com/iframe_api"></script>
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
@@ -41,61 +40,14 @@
    </div>
    <div class="contact menu" >
       <div class="ui animated button" tabindex="0" id="autor-id">
-         <div class="visible content">Autor</div>
+         <div class="visible content" style="color: azure;">Autor</div>
          <div class="hidden content" >
             <i class="github icon"></i>
          </div>
       </div>
    </div>
    <div id="corpo-conteudo">
-      <div class="ui segment" style="margin: 120px;" >
-         <div 
-            style="display: flex; flex-direction: row; align-items: center; gap: 40px;">
-            <div style="display: flex; flex-direction: row;">
-               <div class="ui icon buttons">
-                  <button class="ui button" id="play-radio">
-                  <i class="play icon"></i>
-                  </button>
-                  <button class="ui button" id="pause-radio">
-                  <i class="pause icon"></i>
-                  </button>
-               </div>
-            </div>
-            <h5 style="margin-top: 0px; color: azure;">RADIO SONGEON</h5>
-         </div>
-         <input class="radio volume" type="range" min="1" max="100" value="35" id="radio-volume-id">
-         <div class="ui divider"></div>
-         <div style="display: flex; flex-direction: row; gap: 25px">
-            <div style="display: flex; flex-direction: column;">
-               <div class="ui radio checkbox">
-                  <div class="radio player" id="lofi-id"></div>
-                  <input type="radio" name="radio" id="lofi-box-id"
-                     onclick="startLofi()">
-                  <label style="color: azure;">Lo-fi radio</label>
-               </div>
-               <div class="ui radio checkbox">
-                  <div class="radio player" id="deeph-id"></div>
-                  <input type="radio" name="radio" id="deeph-box-id"
-                     onclick="startDeeph()">
-                  <label style="color: azure;">Deep house radio</label>
-               </div>
-            </div>
-            <div style="display: flex; flex-direction: column;">
-               <div class="ui radio checkbox">
-                  <div class="radio player" id="classic-id"></div>
-                  <input type="radio" name="radio" id="classic-box-id"
-                     onclick="startClassic()">
-                  <label style="color: azure;">Classical radio</label>
-               </div>
-               <div class="ui radio checkbox">
-                  <div class="radio player" id="ambient-id"></div>
-                  <input type="radio" name="radio" id="ambient-box-id"
-                     onclick="startAmbient()">
-                  <label style="color: azure;">Ambient radio</label>
-               </div>
-            </div>
-         </div>
-      </div>
+      <!-- Added by javascript -->
    </div>
    <script src="index.js" ></script>
 </body>
