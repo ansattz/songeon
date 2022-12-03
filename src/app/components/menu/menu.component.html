@@ -1,0 +1,16 @@
+<mat-drawer-container class="body" autosize>
+  <mat-drawer #drawer class="sidenav" mode="side">
+     <div class="button column">   
+        <button color="primary" mat-fab></button>
+   <button color="primary" mat-fab></button>
+   <button color="primary" mat-fab></button>
+   </div>
+
+  </mat-drawer>
+
+    <mat-button-toggle class="toggle menu button" (click)="drawer.toggle()">
+      Menu
+    </mat-button-toggle>
+
+
+</mat-drawer-container>
