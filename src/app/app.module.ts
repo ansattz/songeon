@@ -6,16 +6,23 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { AppRoutingModule } from './app-routing.module';
 import { MatIconModule } from '@angular/material/icon';
-import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { BackgroundComponent } from './components/background/background.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { AppComponent } from './app.component';
+import { PlaylistsComponent } from './components/playlists/playlists.component';
+import { PipeSec } from './components/playlists/pipe-sec';
+import { UserPositionComponent } from './components/user-position/user-position.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BackgroundComponent,
-    MenuComponent
+    MenuComponent,
+    PlaylistsComponent,
+    PipeSec,
+    UserPositionComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +31,8 @@ import { MenuComponent } from './components/menu/menu.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatButtonToggleModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
