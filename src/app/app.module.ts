@@ -13,7 +13,6 @@ import { MenuComponent } from './components/menu/menu.component';
 import { AppComponent } from './app.component';
 import { PlaylistsComponent } from './components/playlists/playlists.component';
 import { PipeSec } from './components/playlists/pipe-sec';
-import { UserPositionComponent } from './components/user-position/user-position.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { UserPositionComponent } from './components/user-position/user-position.
     MenuComponent,
     PlaylistsComponent,
     PipeSec,
-    UserPositionComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +30,7 @@ import { UserPositionComponent } from './components/user-position/user-position.
     MatButtonModule,
     MatButtonToggleModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
