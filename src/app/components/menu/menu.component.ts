@@ -9,25 +9,23 @@ import { PositionService } from 'src/app/services/position/position.service';
 })
 export class MenuComponent {
 
-   uLat!:number
-   uLng!:number
+   static uLat:number
+   static uLng:number
    showFiller:boolean = false;
-   userPosition: Array<any> = [this.uLng, this.uLat]
    
    constructor(private _pos: PositionService,
               private loc: LocationService ){}
 
    callPosition(){
       this._pos.getPosition().then(resp => {
-         this.uLng = resp.lng
-         this.uLat = resp.lat
-         console.log(this.uLng)
-         console.log(this.uLat)
+         MenuComponent.uLng = resp.lng
+         MenuComponent.uLat = resp.lat
+         console.log(MenuComponent.uLng)
+         console.log(MenuComponent.uLat)
       })
    }
 
-// callLoc(){
-//    console.log(this.uLat)
-//    this.loc.getLoc() //this.loc.getLoc().subscribe((data) => console.log(data))
-// }
+ callLoc(){
+    this.loc.getLoc().subscribe((data) => console.log(data))
+ }
 }
