@@ -11,16 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { BackgroundComponent } from './components/background/background.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { AppComponent } from './app.component';
-import { PlaylistsComponent } from './components/playlists/playlists.component';
-import { PipeSec } from './components/playlists/pipe-sec';
+import { PlayerComponent } from './components/player/player.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     BackgroundComponent,
     MenuComponent,
-    PlaylistsComponent,
-    PipeSec,
+    PlayerComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +31,7 @@ import { PipeSec } from './components/playlists/pipe-sec';
     MatIconModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
