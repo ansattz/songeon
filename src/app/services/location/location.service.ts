@@ -1,21 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MenuComponent } from 'src/app/components/menu/menu.component';
+import { PositionService } from '../position/position.service';
+import { WeatherService } from '../weather/weather.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocationService {
 
-   constructor(private http: HttpClient) { }
-   theUrl:string = ""
+   constructor(private http: HttpClient,
+              public weather: WeatherService) { }
+   theUrl!:string
+   static userLocation:any
 
-   getLoc(){
+   getLocation(){
       this.theUrl = "https://nominatim.openstreetmap.org/reverse?lat=" 
-      + String(MenuComponent.uLat) 
+      + String(PositionService.uLat) 
       + "&lon=" 
-      + String(MenuComponent.uLng) 
+      + String(PositionService.uLng) 
       + "&format=json"
-      return this.http.get(this.theUrl)
+      this.http.get(this.theUrl).subscribe((data) => LocationService.userLocation = data)
+      this.weather.getWeather()
    }
 }
