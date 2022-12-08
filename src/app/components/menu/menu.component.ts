@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { LocationService } from 'src/app/services/location/location.service';
 import { PositionService } from 'src/app/services/position/position.service';
+import { PlaylistService } from 'src/app/services/playlist/playlist.service';
+
 
 @Component({
   selector: 'app-menu',
@@ -8,24 +11,28 @@ import { PositionService } from 'src/app/services/position/position.service';
   styleUrls: ['./menu.component.sass']
 })
 export class MenuComponent {
+   constructor(public pos: PositionService,
+              public loc: LocationService,
+              private sanitizer: DomSanitizer){}
 
-   static uLat:number
-   static uLng:number
+
    showFiller:boolean = false;
-   
-   constructor(private _pos: PositionService,
-              private loc: LocationService ){}
+   player:any
 
-   callPosition(){
-      this._pos.getPosition().then(resp => {
-         MenuComponent.uLng = resp.lng
-         MenuComponent.uLat = resp.lat
-         console.log(MenuComponent.uLng)
-         console.log(MenuComponent.uLat)
-      })
+   async positionBtn(){
+      this.pos.userPosition()
+      await new Promise(f => setTimeout(f, 2500));
+      var iframe = 
+      `
+      <iframe class="playlist weather"
+        src="${PlaylistService.playlistUrl}"
+        width="300" 
+        height="380" 
+        frameBorder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy">
+      </iframe>`
+
+      this.player= this.sanitizer.bypassSecurityTrustHtml(iframe);
    }
-
- callLoc(){
-    this.loc.getLoc().subscribe((data) => console.log(data))
- }
 }
