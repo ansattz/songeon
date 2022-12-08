@@ -2,10 +2,10 @@
    <mat-drawer #drawer class="sidenav" mode="side">
       <div class="button panel">
       <div class="button column">
-         <button color="primary" (click)="callPosition()" mat-fab>
+         <button color="primary" (click)="positionBtn()" mat-fab>
             <mat-icon>place</mat-icon>
          </button>
-         <button color="primary" (click)="callLoc()" mat-fab>
+         <button color="primary" mat-fab>
             <mat-icon>star</mat-icon>
          </button>
       </div>
@@ -21,3 +21,4 @@
       </mat-icon>
    </div>
 </mat-drawer-container>
+<div [innerHTML]="player"></div>
