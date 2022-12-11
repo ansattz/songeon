@@ -7,19 +7,18 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { AppRoutingModule } from './app-routing.module';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
-import { BackgroundComponent } from './components/background/background.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { AppComponent } from './app.component';
-import { PlayerComponent } from './components/player/player.component';
+import { BackgroundComponent } from './components/background/background.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BackgroundComponent,
     MenuComponent,
-    PlayerComponent,
+    BackgroundComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +29,7 @@ import { PlayerComponent } from './components/player/player.component';
     MatButtonToggleModule,
     MatIconModule,
     HttpClientModule,
+    DragDropModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]
