@@ -9,15 +9,27 @@ import { WeatherService } from 'src/app/services/weather/weather.service';
 export class PlaylistService {
 
    playlistUrl!:string
+   favoritePlaylistUrl!:string
+   static itsFavPlaylist:boolean
    mainWeatherTheme:any
    playlistID!:string
+
    shareUrl$: Subject<string> = new Subject<string>
 
    setPlaylistUrl(){
+      PlaylistService.itsFavPlaylist = false
       this.playlistUrl = "https://open.spotify.com/embed/playlist/" 
       + this.playlistID
       + "?utm_source=generator&theme=0"
       this.shareUrl$.next(this.playlistUrl)
+   }
+
+   setFavoritePlaylist(){
+      PlaylistService.itsFavPlaylist = true
+      this.favoritePlaylistUrl = "https://open.spotify.com/embed/playlist/" 
+      + "6CHeafntix4NbfoETn5gE7"
+      + "?utm_source=generator&theme=0"
+      this.shareUrl$.next(this.favoritePlaylistUrl)
    }
 
    async playlist(){
