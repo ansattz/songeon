@@ -1,1 +1,1 @@
-<video autoplay [src]="backgroundByPlaylist" muted loop class="bg"></video>
+<video autoplay muted [src]="backgroundByPlaylist" oncanplay="this.play()" onloadedmetadata="this.muted = true" loop class="bg"></video>
