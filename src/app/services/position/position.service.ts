@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { LocationService } from '../location/location.service';
+import {WeatherService} from '../weather/weather.service';
 
 @Injectable({
    providedIn: 'root'
 })
 export class PositionService {
 
-   constructor(public loc: LocationService) { }
-   static uLat:number
-   static uLng:number
+   constructor(public weather: WeatherService) { }
+   static userLatitude:number
+   static userLongitude:number
 
    async getPosition():Promise<any>{
       return new Promise((resolve) => {
-         navigator.geolocation.getCurrentPosition(resp => {
-            resolve({lng: resp.coords.longitude,
-                    lat: resp.coords.latitude},
+         navigator.geolocation.getCurrentPosition(response => {
+            resolve({lng: response.coords.longitude,
+                    lat: response.coords.latitude},
                    )
          })
       })
@@ -22,10 +22,9 @@ export class PositionService {
 
    userPosition(){
       this.getPosition().then(resp => {
-         PositionService.uLng = resp.lng
-         PositionService.uLat = resp.lat
-         this.loc.getLocation()         
+         PositionService.userLongitude = resp.lng
+         PositionService.userLatitude = resp.lat
+         this.weather.getWeather()         
       })
-
    }
 }
