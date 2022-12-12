@@ -1,4 +1,4 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { ThemesService } from 'src/app/services/themes/themes.service';
 import { WeatherService } from 'src/app/services/weather/weather.service';
 
@@ -8,13 +8,17 @@ import { WeatherService } from 'src/app/services/weather/weather.service';
   templateUrl: './background.component.html',
   styleUrls: ['./background.component.sass']
 })
-export class BackgroundComponent implements DoCheck {
+export class BackgroundComponent implements DoCheck, OnInit {
 
-   backgroundByPlaylist:string = "https://mylivewallpapers.com/wp-content/uploads/Nature/PREVIEW-Pond-Silent-Summer.mp4"
+   backgroundByPlaylist!:string
+
+   ngOnInit(): void {
+      this.backgroundByPlaylist= "https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-Day-Dream.mp4"
+   }
 
    ngDoCheck(): void {
-      if(WeatherService.mainWe !== undefined){
-         this.backgroundByPlaylist = ThemesService.themesData["bg"][WeatherService.mainWe]
-      }
+      WeatherService.mainKeyFromData 
+         ? this.backgroundByPlaylist = ThemesService.themesData["bg"][WeatherService.mainKeyFromData]
+         : null
    }
 }
