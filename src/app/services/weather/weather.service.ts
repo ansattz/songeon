@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LocationService } from '../location/location.service';
 import { PlaylistService } from '../playlist/playlist.service';
+import { PositionService } from '../position/position.service';
 
 
 @Injectable({
@@ -10,20 +10,25 @@ import { PlaylistService } from '../playlist/playlist.service';
 export class WeatherService {
 
    constructor(private http: HttpClient,
-              public play: PlaylistService) { }
-   theUrl!:string
-   static mainWe:string
-   static descWe:string 
+              private play: PlaylistService) { }
+   static mainKeyFromData:string
+   static descriptionKeyFromData:string 
 
-   async getWeather(){
-      await new Promise(f => setTimeout(f, 800));
-      this.theUrl = "https://api.openweathermap.org/data/2.5/weather?q=" 
-      + LocationService.userLocation["address"]["city"]
+   weatherAPI(theUrl:string){
+      return this.http.get(theUrl).toPromise()
+   }
+
+   getWeather(){
+      const theUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" 
+      + String(PositionService.userLatitude) 
+      + "&lon=" 
+      + String(PositionService.userLongitude)
       + "&appid=2b425334302e4882839efd307f61b3fa"
-      this.http.get(this.theUrl)
-      .subscribe((data:any) => 
-                 {WeatherService.mainWe = data["weather"][0]["main"],
-                    WeatherService.descWe = data["weather"][0]["description"]})
+      this.weatherAPI(theUrl)
+      .then((data:any) => 
+                 {WeatherService.mainKeyFromData = data["weather"][0]["main"],
+                    WeatherService.descriptionKeyFromData = data["weather"][0]["description"]}).catch((error) => {console.log(error)})
+
       this.play.playlist()
    }
 }
