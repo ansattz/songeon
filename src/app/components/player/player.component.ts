@@ -16,13 +16,19 @@ export class PlayerComponent implements AfterContentInit {
 
    // call setWeatherPlayer when playlistUrl is populated
    ngAfterContentInit(): void {
-      this.play.shareUrl$.subscribe((playlistUrl) => this.setWeatherPlayer(playlistUrl))
+      this.play.shareUrl$.subscribe((playlistUrl) => this.setPlayer(playlistUrl))
    }
 
    player:any
-   setWeatherPlayer(playlistUrl:string){
+   setPlayer(playlistUrl:string){
       var playerDiv = document.querySelector('.playlist.box') as HTMLElement
-      playerDiv.style.display = 'flex'
+      if(PlaylistService.itsFavPlaylist){
+         playerDiv.style.backgroundImage = 'radial-gradient(#cdcb35, rgba(39, 36, 36, 0.5607843137))'
+         playerDiv.style.display = 'flex'
+      }else{
+         playerDiv.style.backgroundImage = 'radial-gradient(#7d35a2, rgba(39, 36, 36, 0.5607843137))'
+         playerDiv.style.display = 'flex'
+      }
       var iframe = 
       `
          <iframe class="player"
