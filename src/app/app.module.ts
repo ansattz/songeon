@@ -12,6 +12,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MenuComponent } from './components/menu/menu.component';
 import { AppComponent } from './app.component';
 import { BackgroundComponent } from './components/background/background.component';
+import { PlayerComponent } from './components/player/player.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { BackgroundComponent } from './components/background/background.componen
     AppComponent,
     MenuComponent,
     BackgroundComponent,
+    PlayerComponent,
   ],
   imports: [
     BrowserModule,
