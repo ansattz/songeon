@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ThemesService } from 'src/app/services/themes/themes.service';
 import { WeatherService } from 'src/app/services/weather/weather.service';
+import {BackgroundService} from '../background/background.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlaylistService {
+
+   constructor(private bg: BackgroundService){}
 
    playlistUrl!:string
    favoritePlaylistUrl!:string
@@ -36,6 +39,9 @@ export class PlaylistService {
       await new Promise(f => setTimeout(f, 1500))
       this.mainWeatherTheme = ThemesService.themesData[WeatherService.mainKeyFromData]
       this.playlistID = this.mainWeatherTheme[WeatherService.descriptionKeyFromData]
+
+      // This method is also waiting the two variables from WeatherService
+      this.bg.setUrlWeatherBackground()
       this.setPlaylistUrl()
    }
 }
