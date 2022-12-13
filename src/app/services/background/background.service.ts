@@ -12,8 +12,8 @@ export class BackgroundService {
   constructor() { }
 
   shareUrl$: Subject<string> = new Subject<string>
-  setUrlForBackground(url:string){
-     this.shareUrl$.next(url)
+  setUrlForBackground(path:string){
+     this.shareUrl$.next(path)
   }
 
   setUrlWeatherBackground(){

@@ -27,7 +27,7 @@ export class MenuComponent {
       this.play.setFavoritePlaylist()
    }
 
-   chooseBackgroundBtn(url:string){
-      this.bg.setUrlForBackground(url)
+   chooseBackgroundBtn(path:string){
+      this.bg.setUrlForBackground(path)
    }
 }
