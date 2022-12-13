@@ -13,10 +13,10 @@ export class BackgroundComponent implements OnInit, AfterContentInit{
    backgroundByPlaylist!:string
 
    ngOnInit(): void {
-      this.backgroundByPlaylist = "https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-Day-Dream.mp4"
+      this.backgroundByPlaylist = "../../../assets/background/chilling-alone.mp4"
    }
 
    ngAfterContentInit(): void {
-      this.bg.shareUrl$.subscribe((url) => this.backgroundByPlaylist = url)
+      this.bg.shareUrl$.subscribe((path) => this.backgroundByPlaylist = path)
    }
 }
