@@ -1,6 +1,5 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
-import { ThemesService } from 'src/app/services/themes/themes.service';
-import { WeatherService } from 'src/app/services/weather/weather.service';
+import { AfterContentInit, OnInit, Component } from '@angular/core';
+import { BackgroundService } from 'src/app/services/background/background.service';
 
 
 @Component({
@@ -8,17 +7,16 @@ import { WeatherService } from 'src/app/services/weather/weather.service';
   templateUrl: './background.component.html',
   styleUrls: ['./background.component.sass']
 })
-export class BackgroundComponent implements DoCheck, OnInit {
+export class BackgroundComponent implements OnInit, AfterContentInit{
+   constructor(private bg: BackgroundService){}
 
    backgroundByPlaylist!:string
 
    ngOnInit(): void {
-      this.backgroundByPlaylist= "https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-Day-Dream.mp4"
+      this.backgroundByPlaylist = "https://mylivewallpapers.com/wp-content/uploads/Lifestyle/PREVIEW-Day-Dream.mp4"
    }
 
-   ngDoCheck(): void {
-      WeatherService.mainKeyFromData 
-         ? this.backgroundByPlaylist = ThemesService.themesData["bg"][WeatherService.mainKeyFromData]
-         : null
+   ngAfterContentInit(): void {
+      this.bg.shareUrl$.subscribe((url) => this.backgroundByPlaylist = url)
    }
 }
