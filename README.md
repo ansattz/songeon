@@ -1,3 +1,9 @@
-# Songeon
+<div style="display: flex; flex-direction: column; align-items: center">
 
-app baseado em minhas playlists do spotify
+# Songeon
+    
+The song for my weather
+
+</div>
+
+Songeon is a website that suggests the appropriate playlist for the current local weather.
