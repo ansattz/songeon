@@ -8,6 +8,9 @@
          <button color="primary" (click)="favoriteBtn()" mat-fab>
             <mat-icon>star</mat-icon>
          </button>
+         <button color="primary" (click)="openSearch(template)" mat-fab>
+            <mat-icon>search</mat-icon>
+         </button>
       </div>
       </div>
    </mat-drawer>
@@ -49,3 +52,16 @@
      (click)="chooseBackgroundBtn('../../../assets/background/room-candles.mp4')">
      Room with Candles</button>
 </mat-menu>
+<ng-template #template>
+     <form class="search form">
+      <input
+         type="text"
+         autocomplete="off"
+         name="searchInput"
+         placeholder="Ctrl-V Spotify URL playlist here"
+         class="search field"
+         [(ngModel)]="searchInput"
+      />
+      <mat-icon class="search form icon" (click)="searchPlaylistBtn()">search</mat-icon>
+     </form>
+</ng-template>
