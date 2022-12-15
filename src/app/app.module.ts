@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatMenuModule } from '@angular/material/menu';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { FormsModule } from '@angular/forms';
 
 import { MenuComponent } from './components/menu/menu.component';
 import { AppComponent } from './app.component';
@@ -33,7 +35,9 @@ import { PlayerComponent } from './components/player/player.component';
     MatIconModule,
     HttpClientModule,
     DragDropModule,
-    MatMenuModule
+    MatMenuModule,
+    ModalModule.forRoot(),
+    FormsModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]
