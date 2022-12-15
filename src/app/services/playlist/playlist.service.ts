@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ThemesService } from 'src/app/services/themes/themes.service';
 import { WeatherService } from 'src/app/services/weather/weather.service';
-import {BackgroundService} from '../background/background.service';
+import { BackgroundService } from '../background/background.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class PlaylistService {
 
    playlistUrl!:string
    favoritePlaylistUrl!:string
+   searchPlaylistUrl!:string
    static itsFavPlaylist:boolean
    mainWeatherTheme:any
    playlistID!:string
@@ -33,6 +34,14 @@ export class PlaylistService {
       + "6CHeafntix4NbfoETn5gE7"
       + "?utm_source=generator&theme=0"
       this.shareUrl$.next(this.favoritePlaylistUrl)
+   }
+
+   setSearchPlaylist(id:string){
+      PlaylistService.itsFavPlaylist = false
+      this.searchPlaylistUrl= "https://open.spotify.com/embed/playlist/" 
+      + id
+      + "?utm_source=generator&theme=0"
+      this.shareUrl$.next(this.searchPlaylistUrl)
    }
 
    async playlist(){
